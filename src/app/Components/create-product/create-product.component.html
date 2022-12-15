@@ -5,10 +5,17 @@
   <input [ngClass]="{'input-error': form.controls.price.invalid && form.controls.price.touched}" type="number" min="0" placeholder="price" formControlName="price"/>
   <input [ngClass]="{'input-error': form.controls.description.invalid && form.controls.description.touched}" type="text" placeholder="description" formControlName="description"/>
   <input [ngClass]="{'input-error': form.controls.image.invalid && form.controls.image.touched}" type="text" placeholder="image link" formControlName="image"/>
-  <input [ngClass]="{'input-error': form.controls.category.invalid && form.controls.category.touched}" type="text" placeholder="category" formControlName="category"/>
+  <select [ngClass]="{'input-error': form.controls.category.invalid && form.controls.category.touched}" class="Filter__input" formControlName="category">
+    <option value="" selected>Category:</option>
+    <option value="jewelery">Jewelery</option>
+    <option value="men's clothing">Men's clothing</option>
+    <option value="women's clothing">Women's clothing</option>
+    <option value="electronics">Electronics</option>
+  </select>
   <input [ngClass]="{'input-error': form.controls.rate.invalid && form.controls.rate.touched}" type="number" min="0"  placeholder="rate"  formControlName="rate"/>
   <input [ngClass]="{'input-error': form.controls.count.invalid && form.controls.count.touched}" type="number" min="0" placeholder="count" formControlName="count"/>
-  <button [disabled]="form.invalid"
+
+  <button [disabled]="form.invalid || disabled"
   type="submit"
   class="orangeButton"
   >Create</button>

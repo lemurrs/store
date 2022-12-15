@@ -4,8 +4,14 @@
   gap: 1rem;
   padding: 2rem;
 }
-
-.CreateForm input{
+button:disabled{
+  background: gray;
+}
+button:disabled:hover{
+  transform: scale(1);
+}
+.CreateForm input,
+.CreateForm select{
   padding: 1rem;
   border-radius: 1rem;
   background: #131313;

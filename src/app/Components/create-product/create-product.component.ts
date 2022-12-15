@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ProductsService} from "../../services/products.service";
 import {ModalService} from "../../services/modal.service";
+import {dirname} from "@angular/compiler-cli";
 
 
 
@@ -14,6 +15,8 @@ export class CreateProductComponent implements OnInit{
   constructor(private productService:ProductsService,
               private modalService:ModalService ) {
   }
+
+  disabled=false
 
   form=new FormGroup({
     title: new FormControl<string>('',[
@@ -50,6 +53,7 @@ export class CreateProductComponent implements OnInit{
     }
   }
   submit(){
+    this.disabled=true
     this.productService.create({
       title: this.form.value.title as string,
       price: this.form.value.price as number,
@@ -62,6 +66,7 @@ export class CreateProductComponent implements OnInit{
       }
     }).subscribe(()=>{
       this.modalService.close()
+      this.disabled=false
     })
   }
   ngOnInit() {

@@ -13,8 +13,8 @@ import {Router} from "@angular/router";
 export class ProductPageComponent {
   products: IProduct[]=[]
   loading=false
-  term=''
-  defaultValue=4
+  title=''
+  category=''
 
   constructor(public productsService:ProductsService,
               public modalService:ModalService,
@@ -23,15 +23,10 @@ export class ProductPageComponent {
   ) {
 
   }
-  ShowMore(){
-    this.defaultValue+=4
-    this.productsService.getAll(this.defaultValue).subscribe()
-  }
-
   ngOnInit(): void {
 
     this.loading=true
-    this.productsService.getAll(this.defaultValue).subscribe(()=>{
+    this.productsService.getAll().subscribe(()=>{
       this.loading=false
     })
   }

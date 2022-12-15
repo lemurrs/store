@@ -15,9 +15,9 @@ export class ProductsService{
 
   products:IProduct[]=[]
 
-  getAll(value:number):Observable<IProduct[]>{
+  getAll():Observable<IProduct[]>{
     return this.http.get<IProduct[]>('https://fakestoreapi.com/products',{
-      params:new HttpParams().append('limit',value)
+      // params:new HttpParams().append('limit',value)
       // params:new HttpParams({
       //   fromString:'limit=5'
       // })

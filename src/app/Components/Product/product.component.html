@@ -1,6 +1,7 @@
  <div class="products__productCard productCard">
     <img [src]="product.image" alt="product"/>
    <h2>{{product.title}}</h2>
+   <p>{{product.category}}</p>
       <p><b>Price: </b>{{product.price | currency}}</p>
    <button class="productCard__detailsButton"
            [ngClass]="{
@@ -10,7 +11,6 @@
    (click)="details=!details"
    >{{details? 'Hide': 'Show'}} details</button>
    <div *ngIf="details">
-     {{product.category}}
      <p>{{product.description}}</p>
      <p>Rate: <span [ngStyle]="{fontWeight:'bold'}"> {{product.rating.rate | number: "1.2"}}</span></p>
    </div>

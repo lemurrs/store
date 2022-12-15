@@ -1,6 +1,7 @@
 import {Component, Input} from "@angular/core";
 import {IProduct} from "../../models/product";
 
+
 @Component({
   selector: 'app-product',
   templateUrl:'product.component.html',
@@ -9,6 +10,5 @@ import {IProduct} from "../../models/product";
 
 export class ProductComponent {
   @Input() product:IProduct
-
   details = false
 }
