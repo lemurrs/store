@@ -25,9 +25,9 @@ export class ProductsService{
       //   fromObject:{limit:5}
       // })
     }).pipe(
-      delay(200),// задержка стрима
-      catchError(this.errorHandler.bind(this)),
+      delay(200),
       retry(2),
+      catchError(this.errorHandler.bind(this)),
       tap(products=>this.products=products)
     )
   }
@@ -37,7 +37,10 @@ export class ProductsService{
   }
   create(product:IProduct):Observable<IProduct>{
 return this.http.post<IProduct>('https://fakestoreapi.com/products',product).pipe(
-  tap(prod=>this.products.push(prod ))
+  retry(2),
+  catchError(this.errorHandler.bind(this)),
+  tap(prod=>this.products.push(prod )),
+
 )
   }
 }

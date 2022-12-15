@@ -1,0 +1,42 @@
+.CreateForm{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.CreateForm input{
+  padding: 1rem;
+  border-radius: 1rem;
+  background: #131313;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  overflow: hidden;
+}
+.input-error{
+border: 2px solid red!important;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.CreateForm h3{
+font-size: 3rem;
+  margin: 1rem;
+  border-block-end: 4px solid;
+  animation: borderAnimation 1s ease infinite;
+  border-image-slice: 1;
+}
+@keyframes borderAnimation {
+  0%{
+    border-image-source: linear-gradient(90deg,orange 50%,black 50%)
+  }
+  50%{
+    border-image-source: linear-gradient(90deg,black 50%,orange 50%)
+  }
+  100%{
+    border-image-source: linear-gradient(90deg,orange 50%,black 50%)
+  }
+}

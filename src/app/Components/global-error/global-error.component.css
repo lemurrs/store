@@ -1,4 +1,4 @@
-.globalError{
+.Error{
   min-height: 4rem;
   background: red;
   color: white;
@@ -6,4 +6,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.globalError{
+  position: relative;
+}
+.globalError button{
+position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 1rem;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: 3rem;
 }

@@ -10,6 +10,7 @@
    (click)="details=!details"
    >{{details? 'Hide': 'Show'}} details</button>
    <div *ngIf="details">
+     {{product.category}}
      <p>{{product.description}}</p>
      <p>Rate: <span [ngStyle]="{fontWeight:'bold'}"> {{product.rating.rate | number: "1.2"}}</span></p>
    </div>

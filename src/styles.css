@@ -18,3 +18,16 @@ input:active{
   border: none;
   outline: none;
 }
+.orangeButton{
+  padding: 1rem;
+  font-weight: 700;
+  font-size: 2rem;
+  border-radius: 1rem;
+  border: none;
+  background: orange;
+  color: black;
+  transition: all .15s;
+}
+.orangeButton:hover{
+  transform: scale(1.1);
+}

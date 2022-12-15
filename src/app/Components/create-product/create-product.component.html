@@ -1,10 +1,16 @@
 
-<form [formGroup]="form" (ngSubmit)="submit()">
-  <input type="text" placeholder="Product Name" formControlName="title" appFocus/>
-  <button
+<form [formGroup]="form" (ngSubmit)="submit()" class="CreateForm">
+  <h3>Create your own product!</h3>
+  <input [ngClass]="{'input-error': form.controls.title.invalid && form.controls.title.touched}" type="text" placeholder="name" formControlName="title" appFocus/>
+  <input [ngClass]="{'input-error': form.controls.price.invalid && form.controls.price.touched}" type="number" min="0" placeholder="price" formControlName="price"/>
+  <input [ngClass]="{'input-error': form.controls.description.invalid && form.controls.description.touched}" type="text" placeholder="description" formControlName="description"/>
+  <input [ngClass]="{'input-error': form.controls.image.invalid && form.controls.image.touched}" type="text" placeholder="image link" formControlName="image"/>
+  <input [ngClass]="{'input-error': form.controls.category.invalid && form.controls.category.touched}" type="text" placeholder="category" formControlName="category"/>
+  <input [ngClass]="{'input-error': form.controls.rate.invalid && form.controls.rate.touched}" type="number" min="0"  placeholder="rate"  formControlName="rate"/>
+  <input [ngClass]="{'input-error': form.controls.count.invalid && form.controls.count.touched}" type="number" min="0" placeholder="count" formControlName="count"/>
+  <button [disabled]="form.invalid"
   type="submit"
+  class="orangeButton"
   >Create</button>
-  <p style="color: red"
-    *ngIf="title.errors?.minlength && title.touched"
-  >Fill title field, now title length is {{title.value.length}}</p>
+
 </form>
