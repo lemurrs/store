@@ -1,0 +1,33 @@
+<div class=login>
+  <div class=loginImg>
+    <img src="./assets/images/LoginImg.png" alt='mountain'/>
+  </div>
+  <div class=loginForm>
+    <div class=loginBlock>
+      <div  class=loginTitle>
+        <img src="./assets/images/LoginLogo.png" alt="logo"/>
+      </div>
+      <h4 class=loginWelcome>Welcome, login to your account!</h4>
+      <form [formGroup]="loginForm" (ngSubmit)="submit()">
+        <div class=loginInputs>
+          <input type="text" placeholder="Username" formControlName="username">
+          <p *ngIf="this.loginForm.get('username')?.invalid && this.loginForm.get('username')?.touched">Username is required</p>
+          <input type="password" placeholder="Password" formControlName="password">
+          <p *ngIf="this.loginForm.get('password')?.invalid && this.loginForm.get('password')?.touched">Password is required (Minimum 4 characters)</p>
+        </div>
+        <div class=loginRememberMe>
+          <div>
+            <input type="checkbox" formControlName="rememberMe">
+            <p>Remember me</p>
+          </div>
+          <a  class="loginRememberMe__noAcc">Dont have an account?</a>
+        </div>
+
+        <div class=loginButton>
+          <button [disabled]="this.loginForm.invalid" type="submit">Login now</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>

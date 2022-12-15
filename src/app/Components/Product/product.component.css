@@ -1,0 +1,28 @@
+*{
+  box-sizing: border-box;
+}
+.products__productCard img{
+  height: 10rem;
+}
+.products__productCard{
+  padding: 1rem;
+  background: white;
+  border-radius: 1rem;
+  width: 100%;
+  color: black;
+  text-overflow: ellipsis;
+}
+.productCard__detailsButton{
+  border: none;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.productCard__detailsButton:hover{
+  transform: scale(1.1);
+}
+.orange{
+  background:orange;
+}
+.yellow{
+  background: yellow;
+}
