@@ -1,14 +1,19 @@
-<h1>{{ title | titlecase }}</h1>
-<input type="text" placeholder="Filter products..." [(ngModel)]="term"/>
-<button (click)="modalService.open()">Create</button>
+<div class="ProductPage">
+  <div class="ProductPage__Filter Filter">
+    <input class="Filter__input" type="text" placeholder="Filter products..." [(ngModel)]="term"/>
+    <button class="Filter__createNewProductBtn orangeButton" (click)="modalService.open()">Create</button>
+  </div>
+  <p *ngIf="loading">Loading...</p>
+  <div class="ProductPage__products" *ngIf="productsService.products">
+    <app-product *ngFor="let product of productsService.products | filterProducts:term; let i = index"
+                 [product]="product" ></app-product>
+  </div>
+  <button class="ProductPage__showMoreButton orangeButton" *ngIf="defaultValue<20"
+          (click)="ShowMore()"
+  >Show More</button>
 
-<p *ngIf="loading">Loading...</p>
-<div class="products" *ngIf="productsService.products">
-  <app-product *ngFor="let product of productsService.products | filterProducts:term; let i = index"
-               [product]="product" ></app-product>
+  <app-modal *ngIf="modalService.isVisible$ | async">
+    <app-create-product></app-create-product>
+  </app-modal>
+
 </div>
-
-
-<app-modal *ngIf="modalService.isVisible$ | async">
-  <app-create-product></app-create-product>
-</app-modal>

@@ -5,13 +5,19 @@
   height: 10rem;
 }
 .products__productCard{
-  padding: 1rem;
   background: white;
+  padding: 1rem;
   border-radius: 1rem;
   width: 100%;
   color: black;
   text-overflow: ellipsis;
+  transition: all 0.2s;
+  font-size: 1.5rem;
 }
+.products__productCard:hover{
+  transform: scale(1.02);
+}
+
 .productCard__detailsButton{
   border: none;
   padding: 1rem;

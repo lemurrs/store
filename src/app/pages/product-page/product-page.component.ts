@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {IProduct} from "../../models/product";
-import {Observable} from "rxjs";
 import {ProductsService} from "../../services/products.service";
 import {ModalService} from "../../services/modal.service";
 import {AuthService} from "../../services/auth.service";
@@ -12,11 +11,10 @@ import {Router} from "@angular/router";
   styleUrls: ['./product-page.component.css']
 })
 export class ProductPageComponent {
-  title = 'MyVeryBestAngularProject';
   products: IProduct[]=[]
   loading=false
   term=''
-  products$: Observable<IProduct[]>
+  defaultValue=4
 
   constructor(public productsService:ProductsService,
               public modalService:ModalService,
@@ -25,19 +23,17 @@ export class ProductPageComponent {
   ) {
 
   }
-
+  ShowMore(){
+    this.defaultValue+=4
+    this.productsService.getAll(this.defaultValue).subscribe()
+  }
 
   ngOnInit(): void {
 
     this.loading=true
-    // this.products$=this.productsService.getAll().pipe(
-    //   tap(()=>this.loading=false)
-    // )
-
-
-    this.productsService.getAll().subscribe(()=>{
+    this.productsService.getAll(this.defaultValue).subscribe(()=>{
       this.loading=false
     })
-
   }
+
 }

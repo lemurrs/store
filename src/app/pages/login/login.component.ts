@@ -40,7 +40,8 @@ export class LoginComponent implements OnInit{
   submit(){
     this.AuthService.login({
       username:this.loginForm.value.username as string,
-      password:this.loginForm.value.password as string
+      password:this.loginForm.value.password as string,
+      rememberMe:this.loginForm.value.rememberMe as boolean
     }).subscribe({
       next:()=> this.router.navigate(['/'])
     })

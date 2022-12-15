@@ -4,8 +4,6 @@ import {ErrorService} from "./error.service";
 import {Observable, tap} from "rxjs";
 import {ILogin} from "../models/user";
 import {Router} from "@angular/router";
-import {Token} from "@angular/compiler";
-import * as stream from "stream";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +12,7 @@ export class AuthService {
 
   constructor(public http: HttpClient,
               private errorService:ErrorService,
-              private router: Router
+              private router: Router,
 ) { }
 
 
@@ -36,7 +34,7 @@ export class AuthService {
   login(user:ILogin):Observable<ILogin | any>{
     return this.http.post<ILogin | any>('https://fakestoreapi.com/auth/login',user).pipe(
       tap(prod=>{
-        this.setToken(prod.token)
+        if(user.rememberMe) this.setToken(prod.token)
       })
     )
 

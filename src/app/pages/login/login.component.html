@@ -11,9 +11,9 @@
       <form [formGroup]="loginForm" (ngSubmit)="submit()">
         <div class=loginInputs>
           <input type="text" placeholder="Username" formControlName="username">
-          <p *ngIf="this.loginForm.get('username')?.invalid && this.loginForm.get('username')?.touched">Username is required</p>
+          <p *ngIf="this.loginForm.get('username')?.invalid && this.loginForm.get('username')?.touched">Username is mor_2314 (Minimum 5 characters)</p>
           <input type="password" placeholder="Password" formControlName="password">
-          <p *ngIf="this.loginForm.get('password')?.invalid && this.loginForm.get('password')?.touched">Password is required (Minimum 4 characters)</p>
+          <p *ngIf="this.loginForm.get('password')?.invalid && this.loginForm.get('password')?.touched">Password is 83r5^_ (Minimum 4 characters)</p>
         </div>
         <div class=loginRememberMe>
           <div>
