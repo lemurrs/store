@@ -1,4 +1,9 @@
 <nav class="Navigation container">
-  <a routerLink="/">Products</a>
-  <a routerLink="/about">About</a>
+  <div class="Navigation__storeInfo">
+    <a routerLink="/">Products</a>
+    <a routerLink="/about">About</a>
+  </div>
+  <p
+  (click)="authService.logout()"
+  >Log out</p>
 </nav>

@@ -1,34 +1,45 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ErrorService} from "./error.service";
-import {IProduct} from "../models/product";
 import {Observable, tap} from "rxjs";
-import {ILogin, IUser} from "../models/user";
+import {ILogin} from "../models/user";
 import {Router} from "@angular/router";
-import {getTokenAtPosition} from "@angular/compiler-cli/src/ngtsc/util/src/typescript";
+import {Token} from "@angular/compiler";
+import * as stream from "stream";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private http: HttpClient,
+  constructor(public http: HttpClient,
               private errorService:ErrorService,
               private router: Router
 ) { }
 
-  setAuth(token:string){
 
+  setToken(token:string){
+    localStorage.setItem('token',token)
   }
+
+  getToken(){
+    return localStorage.getItem('token')
+  }
+
   getAuth(){
-    return 0
+    return(Boolean(this.getToken()))
   }
-  isLoggedIn(){
-    return this.getAuth() !== null
+  logout(){
+    localStorage.removeItem('token')
+    this.router.navigate(['/login'])
   }
+  login(user:ILogin):Observable<ILogin | any>{
+    return this.http.post<ILogin | any>('https://fakestoreapi.com/auth/login',user).pipe(
+      tap(prod=>{
+        this.setToken(prod.token)
+      })
+    )
 
-  login(user:ILogin):Observable<ILogin>{
-    return this.http.post<ILogin>('https://fakestoreapi.com/auth/login',user)
   }
 
 }

@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ProductsService} from "../../services/products.service";
 import {AuthService} from "../../services/auth.service";
+import {Router} from "@angular/router";
 
 
 
@@ -10,9 +11,10 @@ import {AuthService} from "../../services/auth.service";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
 
-  constructor(private loginService: AuthService ) {
+  constructor(private AuthService: AuthService,
+              private router: Router) {
   }
 
   loginForm=new FormGroup({
@@ -36,13 +38,16 @@ export class LoginComponent {
   }
 
   submit(){
-    console.log(this.loginForm.value)
-    this.loginService.login({
+    this.AuthService.login({
       username:this.loginForm.value.username as string,
       password:this.loginForm.value.password as string
-    }).subscribe()
+    }).subscribe({
+      next:()=> this.router.navigate(['/'])
+    })
   }
-
+ngOnInit() {
+    if(this.AuthService.getAuth()) this.router.navigate(['/'])
+}
 
 
 }

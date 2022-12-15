@@ -3,6 +3,8 @@ import {IProduct} from "../../models/product";
 import {Observable} from "rxjs";
 import {ProductsService} from "../../services/products.service";
 import {ModalService} from "../../services/modal.service";
+import {AuthService} from "../../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-product-page',
@@ -17,17 +19,22 @@ export class ProductPageComponent {
   products$: Observable<IProduct[]>
 
   constructor(public productsService:ProductsService,
-              public modalService:ModalService
+              public modalService:ModalService,
+              public authService:AuthService,
+              public router:Router
   ) {
 
   }
 
 
   ngOnInit(): void {
+
     this.loading=true
     // this.products$=this.productsService.getAll().pipe(
     //   tap(()=>this.loading=false)
     // )
+
+
     this.productsService.getAll().subscribe(()=>{
       this.loading=false
     })
